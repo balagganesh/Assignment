@@ -40,7 +40,7 @@ const Cart = () => {
                       <p>{CartItems[item._id]}</p>
                       <p>£{(item.price * CartItems[item._id]).toFixed(2)}</p>
                       <p onClick={() => removeFromCart(item._id)} className="cross">
-                        <img src="src\assets\Cross.jpeg" alt="X"/>
+                        X
                       </p>
                     </div>
                     <hr />

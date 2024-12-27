@@ -74,10 +74,6 @@ h2 {
     font-weight: 500;
 }
 
-.cart-items-title .cross img {
-    width: 25px;
-    height: 20px;
-}
 
 .cart-final-total-details{
     display: flex;
