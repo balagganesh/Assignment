@@ -1,0 +1,12 @@
+.offer-item{
+    margin-top: 20px;
+}
+.offer-item h2{
+    font-size: max(2.5vw, 20px);
+    font-weight: 600;
+}
+
+.offer-item li{
+    font-size: min(2.5vw, 20px);
+    padding: 10px;
+}

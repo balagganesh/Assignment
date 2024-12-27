@@ -1,0 +1,53 @@
+.food-item{
+    width: 120%;
+    height: 70px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px black;
+    padding: 10px;
+}
+
+.food-item-img-name-price img{
+    width: 100px;
+    object-fit: fill;
+    height: 80px;
+}
+
+.food-item-img-name-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.food-item-img-name-price button{
+    background-color: blue;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    width: 100px;
+}
+
+.food-item-img-name-price button:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+.food-item-img-name-price p {
+    font-size: min(2.5vw, 20px);
+    font-weight: 500;
+}
+
+
+.food-item-img-name-price .add-button{
+    width: 20px;
+    height: 20px;
+}
+.food-item-img-name-price .remove-button{
+    width: 20px;
+    height: 20px;
+}
+
+.food-item-img-name-price .add-button, .remove-button:hover{
+    cursor: pointer;
+}
+
