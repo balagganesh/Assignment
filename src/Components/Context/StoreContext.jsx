@@ -9,7 +9,6 @@ const StoreContextProvider = (props) => {
   const [savings, setSavings] = useState(0);
   const [total, setTotal] = useState(0);
 
-
   const addToCart = (itemId) => {
     SetCartItems((prev) => ({
       ...prev,
@@ -17,14 +16,12 @@ const StoreContextProvider = (props) => {
     }));
   };
 
-
   const removeFromCart = (itemId) => {
     SetCartItems((prev) => ({
       ...prev,
       [itemId]: Math.max((prev[itemId] || 0) - 1, 0),
     }));
   };
-
 
   const gettotalamount = () => {
     let totalamount = 0;
@@ -39,11 +36,9 @@ const StoreContextProvider = (props) => {
     return totalamount;
   };
 
-
   useEffect(() => {
     let newSubtotal = 0;
     let newSavings = 0;
-
 
     for (const itemId in CartItems) {
       const quantity = CartItems[itemId];
@@ -52,23 +47,25 @@ const StoreContextProvider = (props) => {
       if (itemInfo && quantity > 0) {
         newSubtotal += itemInfo.price * quantity;
 
-
         if (itemInfo.name === "Cheese" && quantity >= 2) {
           newSavings += itemInfo.price * Math.floor(quantity / 2);
         }
 
-
         if (itemInfo.name === "Soup" && quantity >= 1) {
-          const breadQuantity = CartItems[product.find((prod) => prod.name === "Bread")?._id] || 0;
-          if (breadQuantity > 0) {
-            newSavings += (product.find((prod) => prod.name === "Bread")?.price || 0) / 2;
+          const breadProduct = product.find((prod) => prod.name === "Bread");
+          const breadId = breadProduct?._id;
+          const breadQuantity = CartItems[breadId] || 0;
+          const eligibleBreadDiscounts = Math.min(breadQuantity, quantity);
+
+          if (breadId && breadQuantity > 0) {
+            newSavings += (breadProduct.price / 2) * eligibleBreadDiscounts;
           }
         }
 
-        
-        if (itemInfo.name === "Butter" && quantity >=3) {
-          newSavings += (itemInfo.price / 3) * quantity;
-        }
+        if (itemInfo.name === "Butter" && quantity >= 3) { 
+        const completeSetsOfThree = Math.floor(quantity / 3);
+        newSavings += (itemInfo.price / 3) * completeSetsOfThree * 3;
+        } 
       }
     }
 
@@ -95,6 +92,5 @@ const StoreContextProvider = (props) => {
     </StoreContext.Provider>
   );
 };
-
 
 export default StoreContextProvider;
